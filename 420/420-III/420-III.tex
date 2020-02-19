@@ -10,6 +10,104 @@
 \cfoot{\thepage}
 
 \begin{problem}{1}
-Suppose that $\vec{F}$ is an n=dimensional vector field defined on $\R$
+Suppose that $\vec{F}$ is an n-dimensional vector field defined on $\R^n$ and let $\vec{X} = \vec{X}(t) , \ t_0 \leq t \leq t_1$ represent some curve in $\R^n$. Suppose further that $\phi:\R^n \rightarrow \R$ is a scalar function such that $\nabla\phi = \vec{F}$. Show that the work done by $\vec{F}$ in moving a particle along the curve is given by
+$$\phi(X(t_1)) - \phi(X(t_0))$$
 \end{problem}
+
+\begin{solution}
+The work of the particle moving along the path can be described as
+$$ \bigintss_{X(t_0)}^{X(t_1)}\vec{F}\bigcdot d\vec{X} = \bigintss_{X(t_0)}^{X(t_1)}\nabla\phi \bigcdot d\vec{X}$$
+and since
+$$ \nabla\phi \bigcdot d\vec{X} = \begin{bmatrix}\frac{\p \phi}{\p x_1}\\ \vdots \\ \frac{\p \phi}{\p x_n}\end{bmatrix} \bigcdot \begin{bmatrix}dx_1 \\ \vdots \\ dx_n \end{bmatrix} = (\frac{\p \phi}{\p x_1}dx_1 + \cdots + \frac{\p \phi}{\p x_n}dx_n) = d\phi$$
+by substitution I get
+$$\bigintss_{X(t_0)}^{X(t_1)}d\phi = \phi\bigg\rvert_{X=X(t_0)}^{X(t_1)} = \phi(X(t_1)) - \phi(X(t_0))$$
+So it is clear that the work done by the particle moving along the path is
+$$\phi(X(t_1)) - \phi(X(t_0))$$
+\end{solution}
+
+\begin{problem}{2}
+Suppose $\nabla\psi = y^2 - 2xyz^3\textbf{i} + 3+2xy-x^2z^3\textbf{j} + 6z^3-3x^2yz^2\textbf{k}.$ Find $\psi$.
+\end{problem}
+\begin{solution}
+Since $\nabla\psi$ is written as
+$$\nabla\psi = \frac{\p \psi}{\p x}\textbf{i} + \frac{\p \psi}{\p y}\textbf{j} +  \frac{\p \psi}{\p z}\textbf{k},$$
+if I integrate the first component I get
+$$\psi = \bigintss \frac{\p\psi}{\p x}dx= \bigintss y^2 -2xyz^3dx = y^2x - x^2yz^3 + f(y,z).$$
+Now, if I differentiate $\psi$ with respect to y, I get
+$$\frac{\p \psi}{\p y} = 2xy - x^2z^3 + \frac{\p f(y,z)}{\p y}$$
+It is also given that
+$$\frac{\p \psi}{\p y}= 3+ 2xy - x^2z^3$$
+Setting these terms equal I get,
+$$ \frac{\p \psi}{\p y} = 2xy - x^2z^3 + \frac{\p f(y,z)}{\p y} = 3+ 2xy - x^2z^3 \implies \frac{\p f(y,z)}{\p y} = 3.$$
+Now, integrating this derivative with respect to $y$ I get
+$$f(y,z) = \bigintss \frac{\p f(y,z)}{\p y} dy = 3y + f(z)$$
+and substituting $f(y,z)$ back into $\psi$ I get
+$$\psi =  y^2x-x^2yz^3+3y+f(z).$$
+Now, differentiating $\psi$ with respect to $z$ I get
+$$ \frac{d \psi}{d z} =  3x^2yz^2+\frac{df(z)}{dz}.$$
+It is also given that 
+$$\frac{d \psi}{d z} = 6z^3-3x^2yz^2.$$
+Setting these two equal I get
+$$ \frac{d \psi}{d z} =  3x^2yz^2+\frac{df(z)}{dz}= 6z^3-3x^2yz^2 \implies \frac{df(z)}{dz}=6z^3.$$
+Now, integrating $\frac{df(z)}{dz}$ with respect to $dz$ I get
+$$f(z) = \bigintss \frac{df(z)}{dz} dz = \frac{3z^4}{2}+ c.$$
+Finally, subsituting $f(z)$ into $\psi$ I get 
+$$\psi = y^2x-x^2yz^3+3y+\frac{3z^4}{2} + c.$$
+\end{solution}
+
+\begin{problem}{3a}
+Let $X = (x_1,x_2,\cdots,x_n)$ represent a generic point in $\R^n$ and let $P=(p_1,p_2,\cdots,p_n)$ be a fixed point. Let $\vec{U} = \smat{u_1\\\vdots\\u_n}$ be a unit vector. Finally, let $\phi= \phi(X)$ be a real valued function of $n$ variables. If we parameterize the line through $P$ with direction $\vec{U}$ by $\vec{X}(t) = P + t\vec{U}$, then ultimately, $\phi(X(t))$ is a function of $t$. Show that 
+$$\frac{d \phi}{dt}\bigg\rvert_{t=0} = \nabla\phi(P)\bigcdot\vec{U}$$
+\end{problem}
+
+\begin{solution}
+I can rewrite $d\phi$ as $\nabla\phi \bigcdot d\vec{X}$ so, 
+$$\frac{d\phi}{dt} = \nabla\phi \bigcdot \frac{d\vec{X}}{dt}$$
+and $\frac{d\vec{X}}{dt} = \vec{U}$, so when $\frac{d\phi}{dt}$ is evaluated at $t=0$ I get
+$$\frac{d\phi}{dt} \bigg\rvert_{t=0} = \nabla\phi(\vec{X}(0)) \bigcdot \frac{d\vec{X}}{dt}\bigg\rvert_{t=0} = \nabla\phi(P) \bigcdot \vec{U}.$$
+\end{solution}
+
+\begin{problem}{3b}
+Use the Cauchy Schwarz Inequality to show that
+$$ |D_{\vec{U}}(\phi)| \leq |\nabla\phi| $$
+and that this maximum rate of change occurs in the direction $\frac{\nabla\phi}{|\nabla\phi|} $
+\end{problem}
+\begin{solution}
+The Cauchy Schwarz Inequalty states that given vectors $\vec{V}, \vec{W}$, that $|\vec{V} \bigcdot \vec{W}| \leq |V|\cdot|W|$. Using this inequality and the definition of the directional derivitive, it must be true that
+\begin{align*}
+&|\nabla\phi \bigcdot \vec{U}| \leq |\nabla\phi|\cdot |\vec{U}| \\
+&\implies |\nabla\phi \bigcdot \vec{U}| \leq |\nabla\phi| \cdot 1\\
+&\implies |D_{\vec{U}}(\phi)| \leq |\nabla\phi|
+\end{align*}
+It must also be true that in the direction $\vec{U} = \frac{\nabla\phi}{|\nabla\phi|}$ is when the maximum rate of change occurs because it is the upper bound to the inequality $|D_{\vec{U}}(\phi)| \leq |\nabla\phi|$. To show this I subsitute $\vec{U}$ for $\frac{\nabla\phi}{|\nabla\phi|}$
+$$|D_{\frac{\nabla\phi}{|\nabla\phi|}}(\phi)| = \left|\nabla\phi \bigcdot \frac{\nabla\phi}{|\nabla\phi|}\right| = |\nabla\phi|\cdot\bigg|\frac{\nabla\phi}{|\nabla\phi|}\bigg|\cdot\cos(0)=|\nabla\phi|$$
+\end{solution}
+
+\begin{problem}{4}
+Consider the $n-1$ dimensional (hyper) surface in $\R^n$ given by $\phi(x_1,x_2,\cdots,x_n) = c$ where $c$ is a constant. Show that at any point on the surface, $\nabla\phi$ is orthogonal to the surface.
+\end{problem}
+
+\begin{solution}
+Let $\vec{X}(t)$ represent any curve lying on the surface $\phi = c$. Then,
+$$\phi(\vec{X}(t)) = c$$
+and now $\phi(\vec{X}(t))$ is a function of one variable. So, differentiating both sides of this equation I get,
+$$\frac{d\phi}{dt}=\frac{d\phi(\vec{X}(t))}{dt}= \nabla\phi\bigcdot\frac{d\vec{X}}{dt} =\frac{dc}{dt} = 0$$
+Since I have shown that $\nabla\phi \bigcdot \frac{d\vec{X}}{dt} = 0$, I have shown that $\nabla\phi \perp \frac{d\vec{X}}{dt}$ which implies that $\nabla\phi \perp \phi(\vec{X}(t))$
+\end{solution}
+
+\begin{problem}{5}
+Find an equation for the tangent plane to the surface $xz^2 + x^2y = z-1$ at the point $(1,-3,2)$
+\end{problem}
+
+\begin{solution}
+An equation for a plane tangent to the surface, $w=f(x,y,z)$, is $w =f(x_0,y_0,z_0) + f_x(x_0,y_0,z_0)(x-x_0) + f_y(x_0,y_0,z_0)(y-y_0) +  f_z(x_0,y_0,z_0)(z-z_0)$. Using the function and points I am given it is true that
+\begin{align*}
+&f_x = z^2 + 2xy, f_x(1,-3,2) = -2\\
+&f_y = x^2, f_y(1,-3,2) = 1\\
+&f_z = 2xz-1, f_z(1,-3,2)  = 3\\
+&f(1,-3,2) = -1
+\end{align*}
+and by substitution I get an equation for a plane perpendicular to the point (1,-3,2) on the surface to be
+$$ w =-1 + -2(x-1) + 1(y+3) + 3(z-2) = -2x+y+3z-2$$
+\end{solution}
 \end{document}
