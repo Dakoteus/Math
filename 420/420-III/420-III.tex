@@ -16,7 +16,7 @@ $$\phi(X(t_1)) - \phi(X(t_0))$$
 
 \begin{solution}
 The work of the particle moving along the path can be described as
-$$ \bigintss_{X(t_0)}^{X(t_1)}\vec{F}\bigcdot d\vec{X} = \bigintss_{X(t_0)}^{X(t_1)}\nabla\phi \bigcdot d\vec{X}$$
+$$ \bigintss_{X = X(t_0)}^{X(t_1)}\vec{F}\bigcdot d\vec{X} = \bigintss_{X(t_0)}^{X(t_1)}\nabla\phi \bigcdot d\vec{X}$$
 and since
 $$ \nabla\phi \bigcdot d\vec{X} = \begin{bmatrix}\frac{\p \phi}{\p x_1}\\ \vdots \\ \frac{\p \phi}{\p x_n}\end{bmatrix} \bigcdot \begin{bmatrix}dx_1 \\ \vdots \\ dx_n \end{bmatrix} = (\frac{\p \phi}{\p x_1}dx_1 + \cdots + \frac{\p \phi}{\p x_n}dx_n) = d\phi$$
 by substitution I get
@@ -44,11 +44,11 @@ $$f(y,z) = \bigintss \frac{\p f(y,z)}{\p y} dy = 3y + f(z)$$
 and substituting $f(y,z)$ back into $\psi$ I get
 $$\psi =  y^2x-x^2yz^3+3y+f(z).$$
 Now, differentiating $\psi$ with respect to $z$ I get
-$$ \frac{d \psi}{d z} =  3x^2yz^2+\frac{df(z)}{dz}.$$
+$$ \frac{\p \psi}{\p z} =  3x^2yz^2+\frac{df(z)}{dz}.$$
 It is also given that 
-$$\frac{d \psi}{d z} = 6z^3-3x^2yz^2.$$
+$$\frac{\p \psi}{\p z} = 6z^3-3x^2yz^2.$$
 Setting these two equal I get
-$$ \frac{d \psi}{d z} =  3x^2yz^2+\frac{df(z)}{dz}= 6z^3-3x^2yz^2 \implies \frac{df(z)}{dz}=6z^3.$$
+$$ \frac{\p \psi}{d z} =  3x^2yz^2+\frac{df(z)}{dz}= 6z^3-3x^2yz^2 \implies \frac{df(z)}{dz}=6z^3.$$
 Now, integrating $\frac{df(z)}{dz}$ with respect to $dz$ I get
 $$f(z) = \bigintss \frac{df(z)}{dz} dz = \frac{3z^4}{2}+ c.$$
 Finally, subsituting $f(z)$ into $\psi$ I get 
@@ -80,7 +80,7 @@ The Cauchy Schwarz Inequalty states that given vectors $\vec{V}, \vec{W}$, that 
 &\implies |D_{\vec{U}}(\phi)| \leq |\nabla\phi|
 \end{align*}
 It must also be true that in the direction $\vec{U} = \frac{\nabla\phi}{|\nabla\phi|}$ is when the maximum rate of change occurs because it is the upper bound to the inequality $|D_{\vec{U}}(\phi)| \leq |\nabla\phi|$. To show this I subsitute $\vec{U}$ for $\frac{\nabla\phi}{|\nabla\phi|}$
-$$|D_{\frac{\nabla\phi}{|\nabla\phi|}}(\phi)| = \left|\nabla\phi \bigcdot \frac{\nabla\phi}{|\nabla\phi|}\right| = |\nabla\phi|\cdot\bigg|\frac{\nabla\phi}{|\nabla\phi|}\bigg|\cdot\cos(0)=|\nabla\phi|$$
+$$D_{\frac{\nabla\phi}{|\nabla\phi|}}(\phi) = \nabla\phi \bigcdot \frac{\nabla\phi}{|\nabla\phi|} = |\nabla\phi|\cdot\bigg|\frac{\nabla\phi}{|\nabla\phi|}\bigg|\cdot\cos(0)=|\nabla\phi|$$
 \end{solution}
 
 \begin{problem}{4}
