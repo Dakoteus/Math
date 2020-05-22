@@ -4,7 +4,10 @@
 
 \ProvidesPackage{Head}
 \usepackage[T1]{fontenc}
-\RequirePackage{amsmath,amsfonts,amsthm,amssymb,fancyhdr,gensymb,arydshln,mathptmx,setspace,bigints,mathtools,xcolor}
+\RequirePackage{xifthen}
+\RequirePackage{amsmath,amsfonts,amsthm,amssymb,fancyhdr,gensymb,arydshln,setspace,bigints,mathtools,mathptmx}
+\RequirePackage{wasysym}
+\RequirePackage[dvipsnames]{xcolor}
 \RequirePackage[margin=1in]{geometry} 
 \RequirePackage[most]{tcolorbox}
 \definecolor{rng}{rgb}{0.0,0.5,0.0}
@@ -19,6 +22,12 @@
 \makeatletter
 \newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
 \newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\newcommand{\p}{\partial}
+\newcommand{\smat}[1]{\left[\begin{smallmatrix}#1\end{smallmatrix}\right]}
+\newcommand{\bmat}[1]{\begin{bmatrix*}[c]#1\end{bmatrix*}}
+\newcommand{\bigiint}[2]{\mathlarger{\iint\displaylimits_{#1}^{#2}}}
+\newcommand{\bigiiint}[2]{\mathlarger{\iiint\displaylimits_{#1}^{#2}}}
+\newcommand{\mlvarint}{\mathlarger\varint}
 \makeatother
 \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
@@ -26,7 +35,11 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{exercise}[2][Exercise]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-\newenvironment{problem}[2][Problem]{\begin{tcolorbox}[boxrule=.5pt,enhanced,drop fuzzy shadow =black!, arc=6pt]\begin{trivlist}
+\newenvironment{problem}[2][Problem]{\begin{tcolorbox}[boxrule=.5pt,enhanced,drop fuzzy shadow = black!, arc=6pt]\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}\end{tcolorbox}}
+\newenvironment{cproblem}[3][Problem]{\begin{tcolorbox}[colback= #3, boxrule=.5pt,enhanced,drop fuzzy shadow = black!, arc=6pt]\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}\end{tcolorbox}}
+\newenvironment{correction}[2][Correction]{\begin{tcolorbox}[boxrule=.5pt,enhanced,drop fuzzy shadow =black!, arc=6pt]\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}\end{tcolorbox}}
 \newenvironment{question}[2][Question]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
