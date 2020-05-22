@@ -1,0 +1,111 @@
+%!TeX program = lualatex
+\documentclass[titlepage]{article}
+\usepackage{../Head}
+\graphicspath{.}
+\begin{document}
+\fancyhf{}
+\fancyhead[RO,R]{Advanced Calculus 420}
+\fancyhead[LO,L]{Dakota Wicker}
+\fancyhead[CO,C]{Homework XI}
+\cfoot{\thepage}
+
+\begin{problem}{1}
+Consider the formula for the work done moving a mass m along the path $\vec{X}(t)$ from $X_0$ to $X$ which is
+$$ \bigintsss_{t=t_0}^{t_1} \vec{F}(t) \bigcdot d\vec{X}$$
+Show that
+$$ \bigintsss_{t=t_0}^{t_1} \vec{F}(t) \bigcdot d\vec{X} = \frac{1}{2}mv^2(t_1) - \frac{1}{2}mv^2(t_0)$$
+\end{problem}
+
+\begin{solution}
+First I make a substitution
+$$ \bigintsss_{t=t_0}^{t_1} m\vec{a} \bigcdot d\vec{X}$$
+Then I rewrite this as
+$$ m\bigintsss_{t=t_0}^{t_1} \frac{d\vec{v}}{dt} \bigcdot d\vec{X} = m\bigintsss_{t=t_0}^{t_1} d\vec{v} \bigcdot \frac{d\vec{X}}{dt} = m\bigintsss_{t=t_0}^{t_1} \vec{v}\bigcdot d\vec{v}.$$
+Note that $\vec{v}\bigcdot d\vec{v} = v_xdv_x + v_ydv_y$ by definition of dot product. Now, by substitution I get
+$$m\bigintsss_{t=t_0}^{t_1} \vec{v}\bigcdot d\vec{v} = m\bigintsss_{t=t_0}^{t_1} v_xdv_x + v_ydv_y$$
+which means that
+\begin{align*}
+m\bigintsss_{t=t_0}^{t_1} \vec{v}\bigcdot d\vec{v} &= m\left(\bigintsss_{t=t_0}^{t_1} v_xdv_x + \bigintsss_{t=t_0}^{t_1} v_ydv_y\right) \\
+&= m \left(\frac{1}{2}v_x^2(t_1) - \frac{1}{2}v_x^2(t_0)\right) + \left(\frac{1}{2}v_y^2(t_1) - \frac{1}{2}v_y^2(t_0)\right) \\
+&= \frac{1}{2}m\left(\left(v_x^2(t_1) -v_x^2(t_0)\right) + \left(v_y^2(t_1) - v_y^2(t_0)\right)\right) \\
+&= \frac{1}{2}m\left(v_x^2(t_1) -v_x^2(t_0) + v_y^2(t_1) - v_y^2(t_0)\right) \\
+&= \frac{1}{2}m\left(v_x^2(t_1) -v_y^2(t_1) + v_x^2(t_0) - v_y^2(t_0)\right) \\ 
+&= \frac{1}{2}m(-v^2(t_1) + -v^2(t_0)) = \frac{1}{2}m(v^2(t_1) - v^2(t_0)) \\ 
+&= \frac{1}{2}m v^2(t_1) - \frac{1}{2}mv^2(t_0))
+\end{align*}
+\end{solution}
+
+\begin{problem}{2a}
+Show that the work done by gravity moving the mass along the path $\vec{X}(t)$ from $X_0$ to $X$ is also given by 
+$$\bigintss_{t=t_0}^{t_1} \vec{F}(t) \bigcdot d\vec{X} = mg(y(t_1)-y(t_0))$$ 
+\end{problem}
+
+\begin{solution}
+First I make a substitution using the fact that $\vec{F} = m\vec{a}$. That is,
+ $$\bigintss_{t=t_0}^{t_1} \vec{F} \bigcdot d\vec{X} = \bigintss_{t=t_0}^{t_1} m\vec{a} \bigcdot d\vec{X}.$$
+Then using the fact that $\vec{a} = \begin{bmatrix} 0 \\ g \end{bmatrix}$, I make the substitution,
+$$  \bigintss_{t=t_0}^{t_1} m\vec{a} \bigcdot d\vec{X} =\bigintss_{t=t_0}^{t_1} m \begin{bmatrix} 0 \\ g \end{bmatrix} \bigcdot d\vec{X}.$$
+Now by rewriting what I have I get 
+\begin{align*}
+&\bigintss_{t=t_0}^{t_1} m \begin{bmatrix} 0 \\ g \end{bmatrix} \bigcdot d\vec{X}\\
+= m &\bigintss_{t=t_0}^{t_1}  \begin{bmatrix} 0 \\ g \end{bmatrix} \bigcdot \begin{bmatrix} dx(t) \\ dy(t) \end{bmatrix} \\
+= m &\bigintss_{t=t_0}^{t_1} gdy(t) \\
+= mg&\bigintss_{t=t_0}^{t_1} dy(t) = mg(y(t_1) - y(t_0)) 
+\end{align*}
+This shows that
+$$\bigintss_{t=t_0}^{t_1} \vec{F}(t) \bigcdot d\vec{X} = mg(y(t_1)-y(t_0))$$
+is the work done by gravity.
+\end{solution}
+
+\begin{problem}{2b}
+Use our two formulas for work to show that if the mass starts from rest then
+$$v(t) = \sqrt{2g(y(t_1) - y(t_0))} $$
+\end{problem}
+\begin{solution}
+Since the initial state is at rest, this means velocity is equal to zero at $t_0$. That is, $v(t_0) = 0$. Plugging this into the equation I got in the first problem I get,
+$$\bigintsss_{t=t_0}^{t_1} \vec{F}(t) \bigcdot d\vec{X} = \frac{1}{2}mv^2(t_1) - 0$$
+Plugging this into the equation I got in the second problem I get,
+$$\bigintss_{t=t_0}^{t_1} \vec{F}(t) \bigcdot d\vec{X} = mg(y(t_1)-y(t_0)). $$
+This means that
+$$\bigintss_{t=t_0}^{t_1} \vec{F}(t) \bigcdot d\vec{X} = \frac{1}{2}mv^2(t_1) = mg(y(t_1)-y(t_0)).$$
+Using algebraic manipulation I get
+\begin{align*}
+ &\frac{1}{2}mv^2(t_1) = mg(y(t_1)-y(t_0)) \\
+ &\implies \frac{1}{2}v^2(t_1) = g(y(t_1)-y(t_0)) \\ 
+ &\implies v^2(t_1) =2g(y(t_1) - y(t_0)) \\
+ &\implies v(t) = \sqrt{2g(y(t_1) - y(t_0))}
+ \end{align*}
+ This shows that $v(t) = \sqrt{2g(y(t_1) - y(t_0))}$ when the mass is initially at rest.
+\end{solution}
+
+\begin{problem}{3a}
+Use the above information to show that the time it takes for the mass to travel from $X_0$ to $X_1$ under the influence of gravity (starting from rest) is given by
+$$\bigintss_{X=X_0}^{X_1}dt = \bigintss_{X=X_0}^{X_1}\frac{ds}{\sqrt{2g(y(t_1)-y(t_0))}}$$
+\end{problem}
+\begin{solution}
+It is a fact that $\frac{ds}{dt} = v(t)$. Using this fact it is clear that $dt =\frac{ds}{v(t)}$. Using the equation I got from problem 2a (because we are accounting for gravity), I can rewrite $v(t) = \sqrt{2g(y(t_1)-y(t_0))}$. So, rewriting the given integral I get,
+$$\bigintss_{X=X_0}^{X_1}dt = \bigintss_{X=X_0}^{X_1} \frac{ds}{v(t)} = \bigintss_{X=X_0}^{X_1} \frac{ds}{\sqrt{2g(y(t_1)-y(t_0))}}$$
+This shows the time it takes for the mass to travel from $X_0$ to $X_1$ under the influence of gravity.
+\end{solution}
+
+\begin{problem}{3b}
+Use the formula from 3a to show that the time it takes for the mass to move along the cycloid
+\begin{align*}
+&x=a(\theta - \sin(\theta)) \\
+&y=a(1-\cos(\theta)) \\ 
+&\theta_0\leq \theta \leq \pi
+\end{align*}
+is $\pi\sqrt{\frac{a}{g}}$ which is independent of $\theta_0.$
+\end{problem}
+
+\begin{solution}
+When I use the formula
+$$ \bigintss_{X=X_0}^{X_1} \frac{ds}{v(t)} = \bigintss_{X=X_0}^{X_1} \frac{ds}{\sqrt{2g(y(t_1)-y(t_0))}} $$
+I can solve for ds knowing that it is the change in arc length. That is,
+$$ds = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} = \sqrt{a^2(\cos(\theta)-1)^2 + (a\sin(\theta))^2}.$$
+When I plug this into the integral I get 
+$$ \bigintss_{X=X_0}^{X_1} \frac{\sqrt{a^2(\cos(\theta)-1)^2 + (a\sin(\theta))^2}}{\sqrt{2g(y(t_1)-y(t_0))}}  $$
+
+(idk notation is very weird I will ask questions)
+\end{solution}
+\end{document}
