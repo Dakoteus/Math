@@ -1,0 +1,199 @@
+%!TeX program=lualatex
+\documentclass[titlepage]{article}
+ 
+\usepackage{../Head}
+
+
+\frenchspacing
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+%\maketitle
+%\clearpage
+\fancyhf{}
+\fancyhead[RO,R]{Abstract I}
+\fancyhead[LO,L]{Dakota Wicker}
+\fancyhead[CO,C]{Homework X}
+\cfoot{\thepage}
+
+\begin{problem}{1}
+Let $M$ be a fixed $2\times2$ real matrix with determinant 1. Define $\rho: SL(2,\mathbb{R}) \rightarrow SL(2,\mathbb{R})$ according to $\rho(A) = MAM^{-1}$. Show that $\rho$ is an isomorphism.S
+\end{problem}
+\begin{solution}
+$M$ and $A$ have a determinant of one because $M,A \in SL(2,\R)$. $M^{-1}$ also has a determinant of 1 because of the property, $\det(ab) = \det(a)\cdot \det(b)$ where $a,b$ are matricies. So, $\det(MM^{-1}) = \det(I) = 1 = \det(M)\cdot\det(M^{-1})$. Since all of these have a determinant of one, $\det(MAM^{-1}) = \det(MA)\cdot\det(M^{-1})=\det(M)\det(A)\det(M^{-1}) = 1.$ This shows that the product is always in $SL(2,\R)$ and $\rho$ is well defined.
+\\ \\
+$\rho$ is also one-to-one. Assume $\rho(A_1) = \rho(A_2),\ A_1,A_2 \in \text{SL}(2,\R)$. I want to show that this implies $A_1 = A_2$. I rewrite $\rho(A_1) = \rho(A_2)$ as $MA_1M^{-1} = MA_2M^{-1}$. By left multiplying both sides by $M^{-1}$ and then right multiplying by $M$ I get, $A_1 =A_2$. So, 
+$$\rho(A_1) = \rho(A_2) \implies A_1 = A_2.$$
+This shows that $\rho$ is one-to-one.
+\\ \\
+$\rho$ is onto because $\forall y \in SL(2,\R), \exists x \in SL(2,\R) \ s.t \ \rho(x)=y$. 
+\\ \\
+To show $\rho$ is operation preserving, I will show that $\rho(A_1 A_2) = \rho(A_1) \rho(A_2).$ Rewriting the left hand side I get $\rho(A_1 A_2) =MA_1A_2M^{-1}.$ Rewriting the right hand side I get 
+$$\rho(A_1) \rho(A_2) = MA_1M^{-1} MA_2M^{-1} = MA_1IA_2M^{-1} = MA_1A_2M^{-1}.$$
+Since 
+$$\rho(A_1 A_2) = MA_1M^{-1} = \rho(A_1) \rho(A_2),$$
+this shows that $\rho$ is operation preserving.
+\\ \\
+Since $\rho$ is well defined, forms a bijection between $SL(2,\R)$ and is operation preserving, $\rho$ is an isomorphism.
+\end{solution}
+
+\begin{problem}{2}
+Prove that if $G$ is a cyclic group of order $n$, then $G \cong \mathbb{Z}_n$.
+\end{problem}
+\begin{solution}
+Since $G$ is a cyclic group, $G = \langle a \rangle$ where $a^n = e, \ a\in G, \ n\in \Z$. To show $G$ is isomorphic to $\Z_n$, I define the function $\phi: G \rightarrow \langle \Z_n, + \rangle$ as $\phi(a^k) = k, \ 0 \leq k \leq n$. This function is well defined because $G$ has order $n$ and so does $\Z_n$. Since this is true, when $k$ is between 0 and $n$ it follows that the domain will always map to the codomain because $\Z_n$ is all values $y$ where $0 \leq y \leq n$.
+\\ \\
+To show that $\phi$ is one-to-one, assume $\phi(a^{k_1}) = \phi(a^{k_2})$. I want to show that this implies $k_1 = k_2$. Rewriting using the definition of $\phi$, I get $\phi(a^{k_1}) = \phi(a^{k_2}) = k_1 = k_2$. This shows that $\phi$ is one-to-one. 
+\\ \\
+$\phi$ is also onto because for every element in $\Z_n$, there is a $k$ in $G$ such that $\phi(a^k) \in \Z_n$. That $k$ is $k=y$.
+\\ \\
+I want to show that $\phi$ is operation preserving. That is that, $\phi(a^{k_1} a^{k_2}) = \phi(a^{k_1}) + \phi(a^{k_2})$. Rewriting the left hand side I get $\phi(a^{k_1 + k_2}) = k_1 + k_2$. Rewriting the right hand side I get $\phi(a^{k_1}) + \phi(a^{k_2}) = k_1 + k_2$. Since $\phi(a^{k_1} a^{k_2}) = k_1 +k_2  = \phi(a^{k_1}) + \phi(a^{k_2})$, this shows that $\phi$ is operation preserving.
+\\ \\
+Since $\phi$ is well defined, forms a bijection between $G$ and $\Z_n$ and is operation preserving, $\phi$ forms a group isomorphism between $G$ and $\Z_n$. Therefore, $G \cong \Z_n$.
+\end{solution}
+
+\begin{problem}{3}
+Let $\langle G, * \rangle $ and $\langle H, \circ \rangle$ be finite cyclic groups such that $|G| = |H|$. Prove that $G \cong H.$
+\end{problem}
+\begin{myproof}
+Since $\langle G, * \rangle$ and $\langle H, \circ \rangle $ are two finite cyclic groups, they can be expressed in terms of their generators. That is, $\langle G, * \rangle = \langle a \rangle , \ a \in G$ and $\langle H, \circ \rangle = \langle b \rangle , \ b \in H$. This means that $\forall k \in \Z_n, \ a^k \in G$ where $|G|=n$ and since $|G| = |H|$, $b^k \in H$. So, it is easy to see that $G = \{a^0, a^1, ... , a^{n-1}\}$ and $H = \{b^0, b^1, ... , b^{n-1}\}$. Seeing it this way makes it clear that there is a function $\phi: \langle G, *\rangle \rightarrow \langle H, \circ \rangle$. That is, $$\phi(a^k) = b^k.$$
+To show that $\phi$ is one-to-one I will show that $\phi(a^k) = \phi(a^r)$ implies $a^k = a^r$. Rewriting $\phi(a^k) = \phi(a^r)$, I get $b^k = b^r$. Since $b^k = b^r$ implies $k=r$, this shows that $a^k = a^r$.
+\\ \\
+It is clear to see that for every $b^k \in H$ there is an $a^k \in G$ such that $\phi(a^k) = b^k$ because $\phi(a^k) = b^k$ is the definition of the function.
+\\ \\
+I want to show that $\phi$ is operation preserving. To do this I will show that $\phi(a^k * a^r) = \phi(a^k) \circ \phi(a^r)$. By rewriting the left hand side of this equation I get $\phi(a^k * a^r) = \phi(a^{k+r}) = b^{k+r}$. Rewriting the right hand side I get $\phi(a^k) \circ \phi(a^r) = b^k \circ b^r = b^{k+r}$. Since $\phi(a^k * a^r)= b^{k+r} = \phi(a^k) \circ \phi(a^r)$, this shows that $\phi$ is operation preserving.
+\\ \\
+Since $\phi$ is well defined, forms a bijection between $\langle G,* \rangle$ and $\langle H, \circ \rangle$, and is operation preserving, $\phi$ is an isomorphism between  $\langle G,* \rangle$ and $\langle H, \circ \rangle$. Since this isomorphism exists,  $\langle G,* \rangle \cong \langle H, \circ \rangle$ when $|G| = |H|$.
+\end{myproof}
+
+\begin{problem}{4}
+Let $G$ be a group. Show that the function $f: G \rightarrow G$ defined by
+$$ f(a) = a^{-1}$$
+is an isomorphism (hence an automorphism) iff $G$ is abelian.
+\end{problem}
+\begin{solution}
+$f$ is well defined because the inverse exists for every element in $G$ because $G$ is a group.
+To show that $f$ is one-to-one, I will show that $f(a_1) = f(a_2) \implies a_1 = a_2$. I will rewrite the RHS of the implication using the definition of $f$ as $f(a_1) = f(a_2) = a^{-1}_1 = a^{-1}_2$. Since it is a property that inverses are unique in groups, it follows that, $a_1 = a_2$. This shows that $f$ is one-to-one.
+\\ \\
+$f$ is onto because it is a property of groups that for every element in $G$, there is an inverse. So, the inverse of $a^{-1}$ = ${(a^{-1})}^{-1} = a$. So $\forall y \in G, \exists x \in G \ s.t \ f(x) = y$. This shows that $f$ is onto.
+\\ \\
+I want to show that $f$ is operation preserving. To do this I can show that $f(a_1 a_2) = f(a_1) f(a_2)$. I can rewrite the RHS as $f(a_1 a_2) = {(a_1a_2)}^{-1}.$ Then I rewrite the LHS as $f(a_1) f(a_2) = a_1^{-1} a_2^{-1}$. I can multiply $a_1a_2$ on both sides of ${(a_1a_2)}^{-1} = a_1^{-1} a_2^{-1}$ to get $e = a_1 a_2 a_1^{-1} a_2^{-1}$ where $e$ is the identity element in $G$. Here, if $G$ is not abelian then I cannot show that $f$ is operation preserving. But if $G$ is abelian, I can rewrite the equation to be $e = a_1 a_2 a_1^{-1} a_2^{-1} = a_1 a_1^{-1} a_2 a_2^{-1} = e$. This shows that $f$ is operation preserving iff $G$ is abelian.
+\\ \\
+Since $f$ is a well defined function, forms a bijection from $G$ to iteself, and is operation preserving iff $G$ is abelian, there is an isomorphism that exists on $G$ iff $G$ is abelian.
+\end{solution}
+
+\begin{problem}{5}
+Let $a$ be a fixed element of a group $G$. The automorphism $\phi_a: G \rightarrow G$ defined by $\phi_a(x) = axa^{-1}$ is called the $\textbf{inner automorphism induced by}$ a.
+\begin{itemize}
+\item[(a)] Show that $\phi_a\phi_b = \phi_{ab}$ for any $a,b \in G$
+\item[(b)] Show that $(\phi_a)^{-1}  = \phi_{a^{-1}}$ for any $a \in G$
+\item[(c)] Prove that the set of all inner automorphisms, denoted $\text{Inn}(G)$, is a group under function composition.
+\end{itemize}
+\end{problem}
+\begin{solution}
+\vspace{-5mm}
+\begin{itemize}
+\item[(a)] I need to show that $\phi_a \phi_b = \phi_{ab}$. That is, $\phi_a(\phi_b) = \phi_{ab}$. By rewriting the RHS, I get $\phi_a(bxb^{-1}) = abxb^{-1}a^{-1}$. Rewriting the LHS, I get $\phi_{ab} = abx(ab)^{-1}$. Setting the rewritten RHS equal to the rewritten LHS I get $abxb^{-1}a^{-1} = abx(ab)^{-1}$. Right multiplying both sides of the equation by $ab$ I get $abxb^{-1}a^{-1}ab = abx(ab)^{-1}ab$. Rewriting, I get $abxee = abxee$ where $e$ is the identity element in $G$. This shows that $\phi_a \phi_b = \phi_{ab}$.
+
+\item[(b)] I need to show that $(\phi_a)^{-1} = \phi_{a^{-1}}$. To do this I will rewrite the RHS as $(\phi_a)^{-1} = (axa^{-1})^{-1}$ and the LHS as $\phi_{a^{-1}} = a^{-1}xa$. Setting these equations equal to eachother I get $(axa^{-1})^{-1} = a^{-1}xa$. Since these are all elements of $G$ because of the closure of the binary operation, all of the products inverses exist. So, taking the inverse of both sides of the equation I get $axa^{-1} = (a^{-1}xa)^{-1}$. It follows that $(axa^{-1})^{-1} = ((a^{-1}xa)^{-1})^{-1} = a^{-1}xa$. Since $(\phi_a)^{-1} = ((a^{-1}xa)^{-1})^{-1} = a^{-1}xa = \phi_{a^{-1}}$, this shows that $(\phi_a)^{-1} = \phi_{a^{-1}}$.
+
+\item[(c)] 
+\begin{myproof}
+$\text{Inn}(G)$ is closed under $\circ$ because for any $a,b \in G$, $\phi_a \circ \phi_b = \phi_{ab}, \ \phi_{ab} \in \text{Inn}(G)$. This is shown in part (a). Therefore $\text{Inn}(G)$ is closed under $\circ$.
+\\
+To find the identity, I want to find an element $\phi_{\conj{e}}$ such that $\phi_f \circ \phi_{\conj{e}} = \phi_f$. That is, where $f\conj{e}x\conj{e}^{-1}f^{-1} = fxf^{-1}$. This is when $\conj{e} = e$ where $e \in G$. So, the identity is $\phi_{e}$. 
+\\
+In part (b) I have shown that for any $a\in G, \ (\phi_a)^{-1} = \phi_{a^{-1}}$. So the inverse exists and is $\phi_{a^{-1}}$
+\\
+To show that $\langle \text{Inn}(G), \circ \rangle$ has the associative property, I will show that $\phi_a \circ (\phi_b \circ \phi_c) = (\phi_a \circ \phi_b) \circ \phi_c$. From part (a) I know that $\phi_a \circ \phi_b = \phi_{ab}$. So, rewriting the RHS of  $\phi_a \circ (\phi_b \circ \phi_c) = (\phi_a \circ \phi_b) \circ \phi_c$, I get $\phi_a \circ (\phi_{bc}) =\phi_{a(bc)} = \phi_{abc}$ because of the associative property which is in $G$. Rewriting the LHS I get, $(\phi_a \circ \phi_b) \circ \phi_c = \phi_{ab} \circ \phi_c = \phi_{abc}$. Since, $\phi_a \circ (\phi_b \circ \phi_c) = \phi_{abc} = (\phi_a \circ \phi_b) \circ \phi_c$, $\langle \text{Inn}(G), \circ \rangle$ has the associative property.
+\\ 
+Since $\langle \text{Inn}(G), \circ \rangle$ has an identity, an inverse for all elements in it, associativity and is closed under $\circ$, $\langle \text{Inn}(G) , \circ \rangle$ is a group.
+\end{myproof}
+\end{itemize}
+\end{solution}
+
+\begin{problem}{6}
+Find the order of $\left((1,2,5)(1,3,4),5,\omega^{15}\right)$ in the direct product $S_6 \oplus \mathbb{Z}_8 \oplus U_{18}$, where $\omega = \text{cis}(\frac{2\pi}{18})$
+\end{problem}
+\begin{solution}
+Using theorem 8.2.1, ord$((1,2,5)(1,3,4),5,\omega^{15})) = \text{LCM}(\text{ord}_{S_6}((1,2,5)(1,3,4)),\text{ord}_{\Z_8}(5),\text{ord}_{U_{18}}(\omega^{15}))$.\\ (1,2,5)(1,3,4) =$\left(\begin{smallmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\ 2 & 5 & 3 & 4 & 1 & 6 \end{smallmatrix}\right) \circ \left(\begin{smallmatrix}1 & 2 & 3 & 4 & 5 & 6 \\ 3 & 2 & 4 & 1 & 5 & 6 \end{smallmatrix}\right) = \left(\begin{smallmatrix}1 & 2 & 3  & 4 & 5 & 6 \\ 3 & 5 & 4 & 2 & 1 & 6 \end{smallmatrix}\right) = (1,3,4,2,5)$. The order of (1,2,5)(1,3,4) = (1,3,4,2,5) is 5 because the order of a $k$-cycle is $k$.
+\\For $5 \in \Z_8, \ \langle 5 \rangle = \{5, 2, 7, 4, 1, 6, 3, 0\}$. So $\text{ord}_{\Z_8}(5) = 8$.
+\\
+Since $U_{18} \cong \Z_{18}, \ \text{ord}_{\Z_{18}}(15) = \text{ord}_{U_{18}}(\omega^{15})$. For $15 \in \Z_{18}, \ \langle 15 \rangle = \{15, 12, 9, 6, 3, 0\}$. Therefore $\text{ord}_{\Z_{18}}(15) = 6$.
+\\
+Using theorem 8.2.1, ord$((1,2,5)(1,3,4),5,\omega^{15})) = \text{LCM}(\text{ord}_{S_6}((1,2,5)(1,3,4)),\text{ord}_{\Z_8}(5),\text{ord}_{U_{18}}(\omega^{15})) = \text{LCM}(8,5,6) = 120$. 
+\end{solution}
+\begin{problem}{7}
+Find four non-isomorphic groups of order 50.
+\end{problem}
+\begin{solution}
+$\Z_{50}$ has order 50 because its generator is 1. $D_n$ has order $2n$, so $D_{25}$ has order 50 and is not isomorphic to $\Z_{50}$ because it is not abelian. I used theorem 8.1.1 to figure out that $|\Z_{10}\oplus \Z_{5}| = |\Z_{10}|\cdot |\Z_{5}| = 50$. $\Z_{10} \oplus \Z_{5} \not \cong \Z_{50}$ because it is not cyclic. This is because if $\Z_{10} \oplus \Z_5$ was cyclic then  $\Z_{10} \oplus \Z_5 = \langle (a,b)\rangle$ where $\Z_{10} = \langle a \rangle$ and $\Z_5 = \langle b \rangle$, but $\text{ord}_{\Z_{10}\oplus\Z_5}((a,b)) = LCM(10,5) = 10$. This is a contradiction because the order of $\Z_{10} \oplus \Z_5$ is 50. Therefore, $\Z_{10} \oplus \Z_5$ is not cyclic. Also, $\Z_{10} \oplus \Z_{5} \not \cong D_{25}$ because $D_{25}$ is not abelian but $\Z_{10} \oplus \Z_5$ is abelian by the fundamental theorem of finite abelian groups. That is, because $\Z_{10} \oplus \Z_5= \Z_5 \oplus \Z_2 \oplus \Z_5.$ Which can better be seen as $\Z_{5^2} \oplus \Z_{2}$. Finally, $\Z_{5} \oplus D_5$ is the last group. This is not isomorphic to $\Z_{50}$ because it is not abelian and $\Z_{50}$ is. This is also not isomorphic to $\Z_{10} \oplus \Z_5$ because $\Z_{10} \not \cong \Z_5$ or $D_5$. Finally, this is not isomorphic to $D_{25}$. So the groups are, $\Z_{50}, D_{25}, \Z_{10} \oplus \Z_5,$ and $\Z_5 \oplus D_{5}$.
+\end{solution}
+
+\begin{problem}{8}
+Prove or disprove: $\mathbb{Z}_4 \oplus \mathbb{Z}_{15} \cong \mathbb{Z}_6 \oplus \mathbb{Z}_{10}$?
+\end{problem}
+$$\Z_4 \oplus \Z_{15} \not \cong \Z_6 \oplus \Z_{10}.$$
+\begin{myproof}
+It is clear that $|\Z_4 \oplus \Z_{15}| = 4\cdot15 = 60 = 10\cdot6 = |\Z_6 \oplus \Z_{10}|$. If $\Z_4 \oplus \Z_{15}$ is cyclic, then $\Z_4 \oplus \Z_{15} = \langle (a,b) \rangle$ where $\Z_4 = \langle a \rangle, \Z_{15} = \langle b \rangle$. $\text{ord}_{\Z_4\oplus\Z_{15}}((a,b)) = \text{LCM}(\text{ord}_{\Z_4}(a), \text{ord}_{\Z_{15}}(b))$ = LCM$(4,15)$ = 60 = $|\Z_4 \oplus \Z_{15}|$. Therefore $\Z_4 \oplus \Z_{15}$ is cyclic.
+\\ \\
+If $\Z_6 \oplus \Z_{10}$ is cyclic, then $\Z_6 \oplus \Z_{10} = \langle (a,b) \rangle$ where $\Z_6 = \langle a \rangle, \ \Z_{10} = \langle b \rangle$. But, $\text{ord}_{\Z_6 \oplus \Z_{10}}((a,b)) = \text{LCM}(\text{ord}_{\Z_6}(a), \text{ord}_{\Z_{10}}) = $ LCM$(6,10) = 30 \neq 60 = |\Z_6 \oplus \Z_{10}|$. Therefore $\Z_6 \oplus \Z_{10}$ is not cyclic.
+\\ \\
+Since $\Z_4 \oplus \Z_{15}$ is cyclic and $\Z_6 \oplus \Z_{10}$ is not cyclic, by theorem 7.4.2,  $\Z_4 \oplus \Z_{15} \not \cong \Z_6 \oplus \Z_{10}.$
+\end{myproof} 
+
+\begin{problem}{9}
+Knowing that $S_3 \oplus \Z_2$ has 12 elements, it may be isomorphic to $\Z_{12}, \Z_6 \oplus \Z_2, A_4, $ or $D_6.$ Which one? Why?
+\end{problem}
+\begin{solution}
+To find the elements with order 2 in $S_3 \oplus \Z_2$, I need to find the pairs $(a,b)$ such that $(a,b)^2  = e$. Using theorem 8.2.1, I find that $\text{ord}_{S_3 \oplus \Z_2}((a,b)) = \text{LCM}(\text{ord}_{S_3}(a), \text{ord}_{\Z_2}(b))$ but I want to find where the order is 2, so that is when $\text{LCM}(\text{ord}_{S_3}(a), \text{ord}_{\Z_2}(b)) = 2 = \text{LCM}(2,1), \text{LCM}(1,2),$ and $\text{LCM}(2,2)$. By inspection of $S_3$ and $\Z_2$, it follows that there are 3 elements that satisfy $\text{ord}_{S_3}(a)= 2$ and $\text{ord}_{\Z_2}(b) = 1$. There is also only one element that satisfies $\text{ord}_{S_3}(a) = 1$ and $\text{ord}_{\Z_2}(b) =2$. Another 3 elements satisfies when $\text{ord}_{S_3}(a) = 2$ and $\text{ord}_{\Z_2}(b) = 2$. So, in total, there are 7 elements in $S_3 \oplus \Z_2$. Doing the same process for $\Z_6 \oplus \Z_2$ I find that there is one element in $\Z_6$ with order 2 which is $a^k$ when $\frac{6}{\text{gcd}(6,k)} = 2$. So, $k = 3$ is the only solution which means ord$(\langle 1^3 \rangle)= 2 =$ ord$(\langle3\rangle) = 2$. Since there is one element of order 2, again by theorem 8.2.1, I find that there are only 3 elements of order 2 in $\Z_6 \oplus \Z_2$ therefore $S_3 \oplus \Z_2 \not \cong \Z_6 \oplus \Z_2$. Doing a similar process for $\Z_{12}$, I find that there is one element in $\Z_{12}$ of order 2, that is when $|a^k| = \frac{12}{\text{gcd}(12,k)} = 2$. This is when $k = 6$, so $|\langle 1^6 \rangle| = |\langle 6 \rangle| = 2$. So, since there is only one element of order 2 in $\Z_{12}$, but 7 in $S_3 \oplus \Z_2$, $S_3 \oplus \Z_2 \not \cong \Z_{12}$. A similar process is done for $A_4$. I find that there are only 6 elements of order 2. This is because all transpositions of $S_4$ are of order 2 and in $A_4$. So, since there are only 6 elements of order 2 in $A_4$ and 7 elements of order 2 in $S_3 \oplus \Z_2$, $S_3 \oplus \Z_2 \not \cong A_4$. Since all other groups have been ruled out, $S_3 \oplus \Z_2 \cong D_6$.
+\end{solution}
+
+\begin{problem}{10}
+Consider Aut$(\Z_{15})$.
+\begin{itemize}
+\item[(a)] Tabulate the images of each automorphism over $\Z_{15}$
+\item[(b)] It is known that Aut($\Z_{15}$) is abelian. Based on the number of automorphisms you have found, what do you think Aut($\Z_{15}$) could possibly be isomorphic to (as a direct product)? Can you determine which one it is isomorphic to?
+\end{itemize}
+\end{problem}
+\begin{solution}
+\begin{itemize}
+\item[(a)] Aut($\Z_{15}$) = $\{f_1, f_2, f_4, f_7, f_8, f_{11}, f_{13}, f_{14}\}$.
+\\ \\
+\scalebox{0.8}{
+\noindent\begin{tabular}{| c | c | c | c | c | c | c | c | c | c | c | c | c | c | c | c |}
+\cline{1-16}
+$i$ &$f_i(0)$ &$ f_i(1)$ &$ f_i(2)$ &$ f_i(3)$ &$ f_i(4) $&$ f_i(5) $&$ f_i(6) $&$ f_i(7) $&$ f_i(8) $&$ f_i(9) $&$ f_i(10) $&$ f_i(11) $&$ f_i(12) $&$ f_i(13) $&$ f_i(14)$ \\
+\cline{1-16}
+1 &0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14  \\
+\cline{1-16}
+2 & 0 & 2 & 4 & 6 & 8 & 10 & 12 & 14 & 1 & 3 & 5 & 7 & 9 & 11 & 13  \\
+\cline{1-16}
+4 &0 & 4 & 8 & 12 & 1 & 5 & 9 & 13 & 2 & 6 & 10 & 14 & 3 & 7 & 11  \\
+\cline{1-16}
+7 &0 & 7 & 14 & 6 & 13 & 5 & 12 & 4 & 11 & 3 & 10 & 2 & 9 & 1 & 8  \\
+\cline{1-16}
+8 &0 & 8 & 1 & 9 & 2 & 10 & 3 & 11 & 4 & 12 & 5 & 13 & 6 & 14 & 7  \\
+\cline{1-16}
+11 & 0 & 11 & 7 & 3 & 14 & 10 & 6 & 2 & 13 & 9 & 5 & 1 & 12 & 8 & 4  \\
+\cline{1-16}
+13 & 0 & 13 & 11 & 9 & 7 & 5 & 3 & 1 & 14 & 12 & 10 & 8 & 6 & 4 & 2  \\
+\cline{1-16}
+14 & 0 & 14 & 13 & 12 & 11 & 10 & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1  \\
+\cline{1-16}
+\end{tabular}}
+\item[(b)] Using theorem 7.5.2, Aut($\Z_{15}$)  $\cong U(15)$ and $U(15) \cong U(5)\oplus U(3)$ by corollary 8.3.2, so by transitivity of isomorphisms, Aut$(\Z_{15}) \cong U(5)\oplus U(3)$.
+\end{itemize}
+\end{solution}
+
+\begin{problem}{11}
+Let $\mathcal{R} = \langle R_{\frac{360^{\circ}}{n}} \rangle$ be the subgroup of rotations in $D_n$. Prove or disprove: $D_n \cong \mathcal{R} \oplus \Z_2$
+\end{problem}
+$$ D_n \not \cong \mathcal{R} \oplus \Z_2.$$
+\begin{myproof}
+It is known that $\langle R_{\frac{360^{\circ}}{n}}\rangle \cong \Z_{n}$. If $D_n \cong \mathcal{R} \oplus \Z_2$, then the amount of elements of order 2 in $D_n$ and $\mathcal{R} \oplus \Z_2$ are the same. Suppose $D_n \cong \mathcal{R} \oplus \Z_2$, then $D_n \cong \Z_n \oplus \Z_2$. Let $n=6$. It follows that $D_6 \cong \Z_6 \oplus \Z_2$. But from problem 9, I have found that $\Z_6 \oplus \Z_2$ has only 3 elements and that have order 2 and $D_6$ has 7 elements of order 2. This forms a contradiction with the fact that if $D_n \cong \mathcal{R} \oplus \Z_2$, then the amount of elements of order 2 in $D_n$ and $\mathcal{R} \oplus \Z_2$ are the same. Therefore $D_n \not \cong \mathcal{R} \oplus \Z_2$ in general.
+\end{myproof}
+\end{document}

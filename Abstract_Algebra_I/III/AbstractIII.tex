@@ -1,0 +1,276 @@
+%!TeX program=pdflatex
+\documentclass[titlepage]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,fancyhdr,gensymb,arydshln}
+\pagestyle{fancy}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+%\title{Weekly Homework II}%replace X with the appropriate number
+%\author{Dakota Wicker\\ %replace with your name
+%Abstract Algebra I} %if necessary, replace with your course title
+%\maketitle
+%\clearpage
+\fancyhf{}
+\fancyhead[RO,RE]{Abstract I}
+\fancyhead[LO,LE]{Dakota Wicker}
+\fancyhead[CO,CE]{Homework III}
+\begin{problem}{1}
+Compute
+$$
+\begin{bmatrix} \phantom{-}3 & 5 \\ -5 & 3\end{bmatrix}^2 
+\begin{bmatrix} 1 & -2 \\ 2 & \phantom{-}1 \end{bmatrix} -3\begin{bmatrix}\phantom{-}6 & 7 \\ -7 & 6 \end{bmatrix}
+$$
+Use the result to determine the value of $(3-5i)^2(1+2i)-3(6-7i)$. \\
+Since any matrix in the form
+$$ 
+\begin{bmatrix}
+	 a & -b \\ b & \phantom{-}a
+\end{bmatrix}
+$$
+is isomorphic to the complex number $a+bi$, and all of these matricies take this form, if I do arithmetic on these matricies I will get the same result as if I were to perform the arithmetic on the complex numbers. So, doing the computations I get the following.
+\begin{align*}
+	\begin{bmatrix}
+		\phantom{-}3 & 5 \\ -5 & 3
+	\end{bmatrix}^{2}
+	\begin{bmatrix}
+		1 & -2 \\ 2 & 1
+	\end{bmatrix}
+	-3 \begin{bmatrix}
+		\phantom{-}6 & 7 \\ -7 & 6
+	\end{bmatrix}
+	&= 
+	\begin{bmatrix}
+		-16 & 30 \\ -30 & -16
+	\end{bmatrix}
+	\begin{bmatrix}
+		1 & -2 \\ 2 & \phantom{-}1
+	\end{bmatrix}
+	-3 \begin{bmatrix}
+		\phantom{-}6 & 7 \\ -7 & 6
+	\end{bmatrix} \\
+	&= \begin{bmatrix}
+		\phantom{-}44 & 62 \\ -62 & 44
+	\end{bmatrix}
+	-3\begin{bmatrix}
+		\phantom{-}6 & 7 \\ -7 & 6
+	\end{bmatrix}
+	\\ &=
+	\begin{bmatrix}
+		\phantom{-}44 & 62 \\ -62 & 44
+	\end{bmatrix}
+	-\begin{bmatrix}
+		\phantom{-}18 & 21 \\ -21 & 18
+	\end{bmatrix}
+	\\ &=
+	\begin{bmatrix}
+		\phantom{-}26 & 41 \\ -41 & 26
+	\end{bmatrix}
+\end{align*}
+So, I determine that the answer is $26 - 41i$ because it is equivalent to my computation of
+$
+\begin{bmatrix}
+	\phantom{-}26 & 41 \\ -41 & 26
+\end{bmatrix}
+.$
+\end{problem}
+
+\begin{problem}{3}
+	Define a binary operator $*$ on $\mathbb{Q}$ by $a*b = ab+1$. Evaluate $3*5$ and $2*-\frac{1}{2}$.\\
+	Determine whether $*$ is commutative and associative.
+	\\ \\
+	First I evaluate $3*5 = 16$ and $2*-\frac{1}{2} = 0$.
+	Then, to show that $*$ is not associative I will show that $(a*b)*c \neq a*(b*c) \ \text{where} \ a,b,c \in \mathbb{Q}$.
+	$$(a*b)*c = (ab+1)*c = (ab+1)c + 1 = abc+c+1$$
+	$$a*(b*c) = a*(bc+1) = a(bc+1) + 1 = abc+a+1$$
+	Since $abc+c+1 \neq abc+a+1$, $(a*b)*c \neq a*(b*c)$. Therefore, $*$ is not associative.
+	Now to show that $*$ is commutative I show that $a*b = b*a$.
+	$$a*b=ab+1$$
+	$$b*a=ba+1$$
+	Since $a*b=ab+1=ba+1=b*a$, $a*b = b*a$ therefore $*$ is commutative.
+\end{problem}
+
+\begin{problem}{4}
+	Define a binary operator $*$ on $\mathbb{Z}^+$ as $a*b = (2^{a})^b$. Evaluate $3*5$ and $2*3$. \\Determine whether $*$ is commutative and associative. \\ \\
+	First I compute $3*5 = (2^3)^5 = 2^{15} = 32768$ and $2*3 = (2^2)^3 = 2^6 = 64$.
+	To show that $*$ is associative I will show that $(a*b)*c = a*(b*c)$ where $a,b,c \in \mathbb{Z}^+$.
+	$$(a*b)*c = (2^a)^b * c = \big(2^{(2^a)^b}\big)^c = 2^{2abc}$$
+	$$a*(b*c) = a*((2^b)^c) = (2^a)^{((2^b)^c)} = 2^{a^{(2bc)}}= 2^{a2bc}$$
+	$$ 2^{a2bc} =  2^{2abc}$$
+	Since $(a*b)*c = 2^{a2bc} = 2^{2abc} = a*(b*c)$, $*$ is associative.\\ \\ \\
+	To show that $*$ is commutative, I must show that $a*b = b*a$.
+	$$a*b = (2^a)^b = 2^{ab}$$
+	$$b*a = (2^b)^a = 2^{ba}$$
+	$$2^{ba}=2^{ab}$$
+	Since $a*b = 2^{ab} = 2 ^{ba} = b*a$, $*$ is commutative.
+\end{problem}
+
+\begin{problem}{5}
+	Define a binary operator $*$ on $\mathbb{Z}^+$ as $a*b = 2^{a^b}$. Evaluate $3*5$ and $2*3$.\\
+	Determine whether $*$ is commutative and associative.\\
+	\\
+	First I evaluate $3*5 = 2^{3^5} = 2^{243}$ and $2*3 = 2^{2^3} = 2^8$
+	Now, to show that $*$ is not associative I show that $(a*b)*c \neq a*(b*c)$ where $a,b,c \in \mathbb{Z}^+$.
+	$$(a*b)*c = (2^a)^b*c = \big((2^{(2^a)})^b\big)^c = \big(2^{(2^{ab})}\big)^c = 2^{c(2^{ab})}$$
+	$$a*(b*c) = a*(2^b)^c = (2^a)^{(2^b)^c} = (2^a)^{2^{bc}} = 2^{a2^{bc}}$$
+	Since, $2^{c(2^{ab})} \neq 2^{a2^{bc}}$, $(a*b)*c \neq a*(b*c)$. Therefore $*$ is not associative.
+	To show that $*$ is commutative I show that $a*b = b*a$.
+	$$a*b = (2^a)^b = 2^{ab}$$
+	$$b*a = (2^b)^a = 2^{ba}$$
+	Since $2^{ab} = 2^{ba}$, it follows that $a*b = b*a$. Therefore $*$ is commutative.
+
+\end{problem}
+
+\begin{problem}{6}
+	The binary operation $*$ on $\mathbb{R}^+\cup\{0\}$ is defined as
+	$$a*b = \max{(a,a-b)},$$
+	where $\max{(x,y)}$ denotes the maximum value of the real numbers $x$ and $y$.
+	\begin{itemize}
+		\item[(a)] Explain why $a*0=a$ for all real numbers $a$.
+	$$ a*0 = a, \ \forall a \in \mathbb{R} \ \text{because} \ a*0=\max{(a,a-0)} = \max{(a,a)} = a$$
+		\item[(b)] Does this mean that 0 is the identity element? Explain.
+	\end{itemize}
+	The identity element is defined as the element which is the left identity and the right identity. Although $0$ is the right identity, $a*0=\max{(a,a)}=a$, it is not the left identity because $0*a=\max{(0,0-a)}$. Here, if $a$ is positive, then $\max{(0,0-a)} = 0 \neq a$. Therefore 0 is not the identity element.
+\end{problem}
+
+\begin{problem}{7}
+	Define a binary operation $*$ on $Z$ according to
+	$$a*b=3a+5b$$
+	\begin{itemize}
+		\item[(a)] Is $*$ commutative? Explain.
+		\item[(b)] Is $*$ associative? Explain.
+		\item[(c)] Is $a^3$ well-defined? Explain.
+		\item[(d)] Does the identity element $e$ exist? Explain.
+	\end{itemize}
+	\ \\
+	\begin{itemize}
+	\item[(a)] $*$ is not commutative because $a*b \neq b*a$.
+	$$a*b = 3a+5b$$
+	$$b*a = 3b + 5a$$
+	Since $3a+5b \neq 3b+5a$, $a*b \neq b*a$. Therefore, $*$ is not commutative.
+	\item[(b)] $*$ is not associative because $(a*b)*c \neq a*(b*c)$. 
+	$$(a*b)*c = (3a+5b)*c = 3(3a+5b) + 5c$$
+	$$a*(b*c) = a*(3b+5c) = 3a + 5(3b+5c)$$
+	Since $(a*b)*c = 3(3a+5b) + 5c \neq 3a + 5(3b+5c)=a*(b*c)$, $*$ is not associative.
+	\item[(c)] $a^3$ is not well defined because it is not associative. This means that $a^3$ is ambiguous.
+	\item[(d)] The identity element does not exist. I will show there is no such identity element $e$. Suppose there was an element $e \in \mathbb{Z}$, then
+		$$a*e = a \ \text{and} \ e*a = a \ \text{so} \ a*e = e*a $$
+		It also follows that
+		$$a*e = a = 3a + 5e$$
+		solving for $e$ I get
+		$$ \frac{-2a}{5} = e $$
+		It also follows that 
+		$$e*a = a = 3e+5a$$
+		solving for $e$ I get
+		$$\frac{-4a}{3} = e$$
+		Since $e$ is equal to two separate numbers, this is a contradiction with the assumption that $e$ is the identity element because it is not unique. Therefore the identity element does not exist.
+\end{itemize}
+\end{problem}
+
+\begin{problem}{8}
+	Let $m \geq 2$ be an integer, and define
+$$S = \bigg\{\bigg[\begin{array}{cc} 1&0 \\ k&1 \end{array}\bigg] \bigg| k \in \mathbb{Z}_m\bigg\}$$
+Show that S is a group under multiplication, as follows.
+\begin{itemize}
+	\item[(a)] First of all, describe, using proper notation, the meaning of the underlying binary operation $*$.
+	\item[(b)] Show that S is closed under $*$.
+	\item[(c)] Do we need to prove that $*$ is associative? Explain.
+	\item[(d)] What is the identity element? Is it an element in S? Be sure to explain why this is an element of S.
+	\item[(e)] Given an element $z \in S$, does its inverse always exist? If yes, what is it? Is it an element of S?
+	\item[(f)] What is your conclusion about S?
+\end{itemize}
+\ \\ \\ \\
+\begin{itemize}
+	\item[(a)]$*$ is normal matrix multiplication but with elements of $\mathbb{Z}_m$
+	\item[(b)]
+		$$\begin{bmatrix}
+			1 & 0 \\ k & 1
+		\end{bmatrix} 
+		\begin{bmatrix}
+			1 & 0 \\ \phantom{_1}k_1 & 1
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			1&0 \\ k+k_1&1
+		\end{bmatrix} \ \text{where} \ k,k_1 \in \mathbb{Z}_m$$
+			Since $k, k_1 \in \mathbb{Z}_m, \ k+k_1 \in \mathbb{Z}_m$ then it follows that the prodcut $\begin{bmatrix}1&0 \\ k+k_1 & 1\end{bmatrix} \in S$
+	\item[(c)] We don't need to prove associativity on $*$ because we know that matrix multiplication is associative.
+	\item[(d)] The identity element is
+		$$\begin{bmatrix}
+			1 & 0 \\ 0 & 1
+		\end{bmatrix}$$
+		This is an element of S because it takes the form of $\begin{bmatrix}1&0\\k&1\end{bmatrix}, \ k=0 \in \mathbb{Z}_m$
+	\item[(e)] Yes, there is always an inverse because the determinant is non-zero. Using the fact that the inverse of a $2\times 2$ matrix is $\frac{1}{ad-bc}\begin{bmatrix}\phantom{-} d & -b \\ -c & \phantom{-}a  \end{bmatrix}$, I can show that
+	$$
+	\begin{bmatrix} 1&0 \\ k  & 1 \end{bmatrix}^{-1} = \frac{1}{1-0} \begin{bmatrix} \phantom{-}1 & 0 \\ -k & 1 \end{bmatrix} = \begin{bmatrix} 1&0\\-k&1 \end{bmatrix}
+	$$
+	\item[(f)] S is a group because the set is closed, and it has associativity, inverse, and identity on its operator.
+\end{itemize}
+\end{problem}
+
+\begin{problem}{9}
+	Show that the set $T = \{nd \ | \ n\in \mathbb{Z}\}$ forms an additive group for any fixed nonzero integer $d$. What if $d=0$? Is $\langle T,+ \rangle$ still a group? Explain.
+	\\ \\
+	To show that T is an additive group I need to show that T is closed under $+$, associative, has an identity and has an inverse. First, T is closed under $+$ because $a+b = n_1d_1 + n_2d_2, \ a,b \in T$ and any two integers multiplied or added to each other is another integer which can always be represented by the product $nd$. Next I show then T is associative. To do this I show that $(a+b)+c = a+(b+c)$. Let $n_1,n_2,n_3\in \mathbb{Z}$ and $d_1,d_2,d_3\in \mathbb{Z}-\{0\}$
+	$$(a+b)+c = (n_1d_1 + n_2d_2) + c = (n_1d_1 + n_2d_2) + n_3d_3 = n_1d_1 + n_2d_2 + n_3d_3 $$
+	$$a+(b+c) = a+(n_2d_2 + n_3d_3) = n_1d_1 + (n_2d_2 + n_3d_3) =n_1d_1 + n_2d_2 + n_3d_3$$
+	So, clearly it is shown that $(a+b)+c = a+(b+c)$.
+	Next I state that the identity is $e= 0\cdot 1$. This is the identity because any element, $a$, in $T$ added with this element, $e$, in $T$ yeilds the same element $a$. Finally I show that the additive inverse exists. The additive inverse is $-a , \ \forall a\in T$ because any element, $a=nb$, added with $-a = -nb$ is equal to the additive identity $0\cdot1$. All of the properties of $T$ are shown to satisfy the requirements of a group so $T$ is a group.
+\end{problem}
+
+\begin{problem}{10}
+	Prove that the set
+	$$ R = \{3^k \ | \ k \in \mathbb{Z}\}$$
+	forms a group under multiplication. \\
+	\begin{proof}
+		To prove that $R$ forms a group under multiplication, I will show that $R$ is closed under $+$, $R$ is associative, has an identity element and has an inverse. $R$ is closed because any integer raised to another integer power is another integer. To prove associativity, I must show that $(a\cdot b)\cdot c = a \cdot (b \cdot c)$. Let $k_1,k_2 \in \mathbb{Z}$. Then,
+		$$ (a\cdot b) \cdot c = (3^k \cdot 3^{k_1}) \cdot c = (3^{k+k_1}) \cdot c = 3^{k+k_1} \cdot k^{k_2} = 3^{k+k_1+k_2}$$
+		and
+		$$a\cdot(b\cdot c) = a\cdot(3^{k_1} \cdot 3^{k_2}) = a\cdot(3^{k_1+k_2}) = 3^k \cdot3^{k_1+k_2} = 3^{k+k_1+k_2}$$
+		Therefore $(a\cdot b)\cdot c = a \cdot (b \cdot c)$. Now to I show that the identity of $R$ is $e=3^0$.That is, for any element, $a=3^k$, in $R$ , $3^k \cdot 3^0 = 3^k \cdot 1 = 3^k$. Finally I show that the inverse of any element, $a=3^k$, in $R$ is $3^-k$. This is because $3^k \cdot 3^{-k} = 3^{k-k} = 3^0 = e$. Since all the requirements for a group is satisfied for multiplication, $R$ must be a group under multiplication.
+\end{proof}
+\end{problem}
+
+\begin{problem}{11}
+Let $S$ be the set of $3\times 3$ real matricies of the form
+$$\begin{bmatrix}1&a&b\\0&1&0\\0&0&1\end{bmatrix} $$
+Show that $S$ form a group under matrix multiplication. Is it abelian? What is the inverse of the matrix given above?\\
+\\
+To show that S is a group under matrix multiplication, I must show that $S$ is closed under matrix multiplication, it is associative, has an indentity element, and has an inverse.
+\\
+$S$ is closed because matrix multiplication is known to be closed. $S$ is also associative because matrix multiplication is associative. This group can be shown to be abelian. In otherwords $AB = BA , \ A,B\in S$ is true, which I show now
+\begin{align*}
+AB =\begin{bmatrix}1&a&b\\0&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}1&a_1&b_1\\0&1&0\\0&0&1\end{bmatrix} &= \begin{bmatrix}1&a_1+a&b_1+b\\0&1&0\\0&0&1\end{bmatrix}  \ a_1,b_1 \in \mathbb{R} 
+\\
+BA = \begin{bmatrix}1&a_1&b_1\\0&1&0\\0&0&1\end{bmatrix} \begin{bmatrix}1&a_1&b_1\\0&1&0\\0&0&1\end{bmatrix} &= \begin{bmatrix}1&a+a_1&b+b_1\\0&1&0\\0&0&1\end{bmatrix}  
+\end{align*}
+Since AB=BA, matrix multiplication under $S$ is commutative and therefore $S$ is abelian
+\\
+The identity element of $S$ can be shown with $a=b=0$.
+$$E = \begin{bmatrix} 1&0&0 \\ 0&1&0 \\ 0&0&1 \end{bmatrix} $$
+This is because for any matrix $A \in S$, $AE = A$ and $EA = A$. \\
+Next, the inverse can be shown to exist like so,
+$$\begin{bmatrix}1&a&b\\0&1&0\\0&0&1\end{bmatrix}^{-1} = rref\left(\left[\begin{array}{ccc:ccc}1&a&b &1&0&0\\0&1&0 &0&1&0\\0&0&1 &0&0&1 \end{array}\right]\right) = \left[\begin{array}{ccc:ccc}1&0&0&1&-a&-b\\0&1&0&0&\phantom{-}1&\phantom{-}0\\0&0&1&0&\phantom{-}0&\phantom{-}1\end{array}\right]$$
+So,
+$$ \begin{bmatrix}1&a&b\\0&1&0\\0&0&1\end{bmatrix}^{-1} = \begin{bmatrix} 1&-a&-b \\ 0&1&0 \\ 0&0&1\end{bmatrix}.$$
+$S$ satisfies all properties of an abelian group under matrix multiplication. Therefore $S$ is an abelian group under matrix multiplication. 
+\end{problem}
+\end{document}
